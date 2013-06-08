@@ -5,7 +5,6 @@ name2 = 'curly'
 health2 = 125
 
 
-
 puts "#{name1.capitalize}'s health is #{health1}"
 puts "#{name2.upcase}'s health is #{health2}"
 
@@ -28,3 +27,4 @@ health4 = 90
 puts "#{name4.capitalize.ljust(30, ".")} #{health4}"
 
 puts "The game started on #{Time.new.strftime("%A %D at %r")}"
+
