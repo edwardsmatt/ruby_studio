@@ -1,30 +1,12 @@
-name1 = 'larry'
-health1 = 60
+def time
+	Time.new.strftime("%H:%M:%S")	
+end
 
-name2 = 'curly'
-health2 = 125
+def say_hello(name, health=100)
+	"I'm #{name.capitalize} with a health of #{health} as #{time}"
+end
 
-
-puts "#{name1.capitalize}'s health is #{health1}"
-puts "#{name2.upcase}'s health is #{health2}"
-
-
-health2 = health1
-puts "#{name1.capitalize}'s health is #{health1}"
-puts "#{name2.upcase}'s health is #{health2}"
-
-
-health1 = 30 
-puts "#{name1.capitalize}'s health is #{health1}"
-puts "#{name2.upcase}'s health is #{health2}"
-
-name3 = 'moe'
-health3 = 100
-puts "#{name3.capitalize} has health of #{health3}".center(100, "*")
-
-name4 = 'shemp'
-health4 = 90
-puts "#{name4.capitalize.ljust(30, ".")} #{health4}"
-
-puts "The game started on #{Time.new.strftime("%A %D at %r")}"
-
+puts say_hello("larry", 60)
+puts say_hello("curly", 125)
+puts say_hello("moe")
+puts say_hello("shemp", 90)
