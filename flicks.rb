@@ -1,12 +1,7 @@
-def weekday 
-	Time.new.strftime("%A")
+class Movie
+	def initialize(title, rank)
+		puts "Created movie with title '#{title}' and rank '#{rank}'"
+	end	
 end
 
-def movie_listing(title, rank=0)
-	"#{weekday.upcase}: #{title.capitalize} has a rank of #{rank}"
-end
-
-puts movie_listing("goonies", 10)
-puts movie_listing("ghostbusters", 9)
-
-puts movie_listing("goldfinger")
+movie1 = Movie.new("Matt", 10)
