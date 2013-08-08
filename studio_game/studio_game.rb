@@ -1,52 +1,66 @@
-class Player 
-	attr_accessor :name
-	attr_reader :health
+class Player
 
-	def initialize(name, health=100)
-		@name = name.capitalize
-		@health = health
+  attr_accessor :name
+  attr_reader :health
+
+  def initialize(name, health=100)
+    @name = name.capitalize
+    @health = health
+  end
+  
+  def to_s
+    "I'm #{@name} with a health of #{@health} and a score of #{score}."
+  end
+
+  def blam
+    @health -= 10
+    puts "#{@name} got blammed!"
+  end
+  
+  def w00t
+    @health += 15
+    puts "#{@name} got w00ted!"
+  end
+  
+  def score
+    @health + @name.length
+  end
+  
+end
+
+class Game
+	attr_accessor :title
+
+	def initialize(title)
+		@title = title.capitalize
+		@players = []
 	end
 
-	def name=(new_name)
-  		@name = new_name.capitalize
+	def add_player(player)
+		@players << player
 	end
 
-	def score
-		@health + 8
-	end
-
-	def blam
-		@health -= 10
-		puts "#{@name} got blammed!"
-	end
-
-	def w00t
-		@health += 15
-		puts "#{@name} got w00ted!"
-	end
-
-	def to_s
-		"I'm #{@name} with a health of #{@health} and a score of #{score}"
+	def play
+		puts "There are #{@players.size} players in #{@title}:"
+		puts @players
+		@players.each do |player| 
+			player.blam
+			player.w00t
+			player.w00t
+			puts player
+		end
 	end
 end
 
-players = [Player.new("moe", 120), Player.new("larry", 80), Player.new("curly", 145)]
-puts "There #{players.size} in the game:"
-players.pop
-player4 = Player.new("Shemp", 90)
-players.push(player4)
-players.each do |player|
-        player.blam
-        player.w00t
-        player.w00t
-        puts player
-end
+knuckleheads = Game.new("knuckleheads")
+player1 = Player.new("moe")
+player2 = Player.new("larry", 60)
+player3 = Player.new("curly", 125)
 
 
-#player2 = Player.new("larry", 60)
-#puts player2.name
-#player2.name = "lawrence"
-#puts player2.name
-#puts player2.health
-#puts player2.score
-#puts player2
+knuckleheads.add_player(player1)
+knuckleheads.add_player(player2)
+knuckleheads.add_player(player3)
+
+knuckleheads.play
+
