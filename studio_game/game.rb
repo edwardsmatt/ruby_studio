@@ -1,4 +1,5 @@
 require_relative 'player'
+require_relative 'die'
 
 class Game
 	attr_accessor :title
@@ -12,13 +13,24 @@ class Game
 		@players << player
 	end
 
+	def number_of_players
+		@players.size
+	end
+
 	def play
-		puts "There are #{@players.size} players in #{@title}:"
+		puts "There are #{number_of_players} players in #{@title}:"
 		puts @players
-		@players.each do |player| 
-			player.blam
-			player.w00t
-			player.w00t
+		@players.each do |player|
+			number_rolled = Die.new.roll
+			case number_rolled
+			when 1..2
+				player.blam
+			when 3..4
+				puts "#{player.name} was skipped."
+			else
+				player.w00t
+			end
+
 			puts player
 		end
 	end
