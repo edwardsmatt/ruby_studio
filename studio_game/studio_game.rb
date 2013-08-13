@@ -12,7 +12,7 @@ knuckleheads.add_player(larry)
 knuckleheads.add_player(curly)
 
 knuckleheads.play(2)
-
+knuckleheads.print_stats
 
 chipmunks = Game.new("chipmunks")
 alvin = Player.new("alvin")
@@ -25,4 +25,4 @@ chipmunks.add_player(simon)
 chipmunks.add_player(theodore)
 
 chipmunks.play (2)
-
+chipmunks.print_stats
