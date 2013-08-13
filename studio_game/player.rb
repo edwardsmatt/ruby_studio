@@ -30,6 +30,9 @@ class Player
     @health > 100 ? true: false
   end
 
+  def <=>(other_player)
+    other_player.score <=> self.score
+  end
 end
 
 if __FILE__ == $0
