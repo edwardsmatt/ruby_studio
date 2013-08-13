@@ -1,0 +1,21 @@
+15-blocks-irb-session.txt
+
+2.0.0-p247 :001 > numbers = [24,13,8,65]
+ => [24, 13, 8, 65]
+2.0.0-p247 :002 > numbers.select {|n| n > 20}
+ => [24, 65]
+2.0.0-p247 :003 > numbers.reject {|n| n > 20}
+ => [13, 8]
+2.0.0-p247 :004 > numbers.sort
+ => [8, 13, 24, 65]
+ 2.0.0-p247 :007 > numbers.sort {|a, b| a<=>b}
+ => [8, 13, 24, 65]
+2.0.0-p247 :005 > numbers.sort.reverse
+ => [65, 24, 13, 8]
+2.0.0-p247 :008 > numbers.sort {|a, b| b<=>a}
+ => [65, 24, 13, 8]
+2.0.0-p247 :009 > numbers.reduce(:+)
+ => 110
+2.0.0-p247 :010 > evens, odds = numbers.partition {|n| n.even?}
+ => [[24, 8], [13, 65]]
+2.0.0-p247 :011 >
