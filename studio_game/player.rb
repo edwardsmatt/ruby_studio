@@ -1,3 +1,5 @@
+require_relative 'treasure_trove'
+
 class Player
 
   attr_accessor :name
@@ -6,6 +8,7 @@ class Player
   def initialize(name, health=100)
     @name = name.capitalize
     @health = health
+    @found_treasure = Hash.new(0)
   end
 
   def to_s
@@ -32,6 +35,16 @@ class Player
 
   def <=>(other_player)
     other_player.score <=> self.score
+  end
+
+  def found_treasure(treasure)
+    @found_treasure[treasure.name] += treasure.points
+    puts "#{@name} found a #{treasure.name} worth #{treasure.points}."
+    puts "#{@name}'s treasures: #{@found_treasure}"
+  end
+
+  def points
+    @found_treasure.values.reduce(0, :+)
   end
 end
 

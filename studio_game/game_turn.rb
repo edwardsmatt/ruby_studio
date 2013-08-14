@@ -6,7 +6,7 @@ module GameTurn
   def self.take_turn(player)
       number_rolled = Die.new.roll
       treasure = TreasureTrove.random
-      puts "#{player.name} found a #{treasure.name} worth #{treasure.points}."
+      player.found_treasure(treasure)
       case number_rolled
       when 1..2
         player.blam
