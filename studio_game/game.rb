@@ -48,7 +48,16 @@ class Game
 		wimpy.each do |player|
 			print_name_and_health(player)
 		end
+		print_point_totals
 		print_high_scores
+	end
+
+	def print_point_totals
+
+		@players.sort.each do |player|
+			puts "\n#{player.name}'s point totals:"
+		  puts "#{player.points} grand total points"
+		end
 	end
 
 	def print_name_and_health (player)
