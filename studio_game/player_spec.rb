@@ -18,11 +18,13 @@ describe Player do
   end
 
   it "has a string representation" do
-    @player.to_s.should == "I'm Larry with a health of #{@initial_health} and a score of #{@initial_health + @player.name.length}."
+    @player.found_treasure(Treasure.new(:hammer, 50))
+    @player.found_treasure(Treasure.new(:hammer, 50))
+    @player.to_s.should == "I'm #{@player.name} with a health = #{@initial_health}, points = 100 and score = 250."
   end
 
   it "computes a score as the sum of its health and length of name" do
-    @player.score.should == @initial_health + @player.name.length
+    @player.score.should == @initial_health
   end
 
   it "increases health by 15 when w00ted" do
@@ -33,6 +35,13 @@ describe Player do
   it "decreases health by 10 when blammed" do
     @player.blam
     @player.health.should == @initial_health - 10
+  end
+
+  it "computes a score as the sum of its health and points" do
+    @player.found_treasure(Treasure.new(:hammer, 50))
+    @player.found_treasure(Treasure.new(:hammer, 50))
+
+    @player.score.should == 250
   end
 
   context "with a health over 100" do
@@ -70,5 +79,7 @@ describe Player do
       @player.found_treasure(Treasure.new(:hammer, 50))
       @player.points.should == 500
     end
+
+
   end
 end
