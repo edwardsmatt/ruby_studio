@@ -1,0 +1,35 @@
+[matt@macbook] $ irb
+2.0.0-p195 :001 > letters = Hash.new(0)
+ => {}
+2.0.0-p195 :002 > letters["c"] = 3
+ => 3
+2.0.0-p195 :003 > letters["e"] = 1
+ => 1
+2.0.0-p195 :004 > letters["l"] = 1
+ => 1
+2.0.0-p195 :005 > letters["n"] = 1
+ => 1
+2.0.0-p195 :006 > letters["t"] = 1
+ => 1
+2.0.0-p195 :007 > letters["x"] = 8
+ => 8
+2.0.0-p195 :008 > letters["y"] = 4
+ => 4
+2.0.0-p195 :009 > puts letters
+{"c"=>3, "e"=>1, "l"=>1, "n"=>1, "t"=>1, "x"=>8, "y"=>4}
+ => nil
+2.0.0-p195 :010 > score = 0
+=> 0
+2.0.0-p195 :011 > "excellently".each_char { |c| score += letters[c] }
+=> "excellently"
+2.0.0-p195 :012 >score
+=> 23
+2.0.0-p195 :013 > point_totals = Hash.new(0)
+ => {}
+2.0.0-p195 :014 > "excellently".each_char { |c| point_totals[c] += letters[c]}
+ => "excellently"
+2.0.0-p195 :015 > point_totals
+ => {"e"=>3, "x"=>8, "c"=>3, "l"=>3, "n"=>1, "t"=>1, "y"=>4}
+2.0.0-p195 :016 > point_totals.values.reduce(0, :+)
+ => 23
+2.0.0-p195 :017 >
