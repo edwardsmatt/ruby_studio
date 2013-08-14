@@ -48,7 +48,17 @@ class Game
 		wimpy.each do |player|
 			print_name_and_health(player)
 		end
+		print_point_totals
 		print_high_scores
+		puts "#{total_points} total points from treasures found"
+	end
+
+	def print_point_totals
+
+		@players.sort.each do |player|
+			puts "\n#{player.name}'s point totals:"
+		  puts "#{player.points} grand total points"
+		end
 	end
 
 	def print_name_and_health (player)
@@ -58,5 +68,11 @@ class Game
 	def print_high_scores
 		puts "\n#{@title} High Scores:"
 		@players.sort.each { |player|  puts "#{player.name.ljust(20, '.')} (#{player.score})" }
+	end
+
+	def total_points
+		@players.reduce(0) do |sum, player|
+			sum + player.points
+		end
 	end
 end

@@ -5,8 +5,7 @@ require_relative 'treasure_trove'
 module GameTurn
   def self.take_turn(player)
       number_rolled = Die.new.roll
-      treasure = TreasureTrove.random
-      puts "#{player.name} found a #{treasure.name} worth #{treasure.points}."
+
       case number_rolled
       when 1..2
         player.blam
@@ -15,5 +14,8 @@ module GameTurn
       else
         player.w00t
       end
+
+      treasure = TreasureTrove.random
+      player.found_treasure(treasure)
   end
 end
