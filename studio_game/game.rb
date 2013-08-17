@@ -11,6 +11,23 @@ class Game
 		@players = []
 	end
 
+	def load_file(file_name)
+		File.foreach(file_name) do |line|
+			add_player(Player.from_csv(line))
+		end
+	end
+
+	def save_high_scores(to_file="high_scores.txt")
+		File.open(to_file, "w") do |file|
+			file.puts "#{@title} High Scores:"
+			@players.sort.each { |player|  file.puts high_score_output(player) }
+		end
+	end
+
+	def high_score_output(player)
+		"#{player.name.ljust(20, '.')} (#{player.score})"
+	end
+
 	def add_player(player)
 		@players << player
 	end
@@ -74,7 +91,7 @@ class Game
 
 	def print_high_scores
 		puts "\n#{@title} High Scores:"
-		@players.sort.each { |player|  puts "#{player.name.ljust(20, '.')} (#{player.score})" }
+		@players.sort.each { |player|  puts high_score_output(player) }
 	end
 
 	def total_points
