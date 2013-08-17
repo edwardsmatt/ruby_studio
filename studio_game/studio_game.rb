@@ -11,7 +11,9 @@ knuckleheads.add_player(moe)
 knuckleheads.add_player(larry)
 knuckleheads.add_player(curly)
 
-knuckleheads.play(2)
+knuckleheads.play(10) do
+	knuckleheads.total_points >= 2000
+end
 knuckleheads.print_stats
 
 chipmunks = Game.new("chipmunks")
