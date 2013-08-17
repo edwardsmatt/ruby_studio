@@ -67,4 +67,12 @@ describe Game do
       @players.sort.should == [@player3, @player2, @player1]
     end
   end
+
+  it "loads players from a file" do
+    game = Game.new("Test Players")
+    file_name = File.dirname(__FILE__)+"/players.csv"
+    game.load_file(file_name)
+    game.number_of_players.should == 3
+  end
+
 end

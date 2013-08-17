@@ -11,6 +11,14 @@ class Game
 		@players = []
 	end
 
+	def load_file(file_name)
+		File.foreach(file_name) do |line|
+			name, health = line.split(',')
+			add_player(Player.new(name.chomp, Integer(health)))
+		end
+
+	end
+
 	def add_player(player)
 		@players << player
 	end
