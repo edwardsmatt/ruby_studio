@@ -13,10 +13,15 @@ class Game
 
 	def load_file(file_name)
 		File.foreach(file_name) do |line|
-			name, health = line.split(',')
-			add_player(Player.new(name.chomp, Integer(health)))
+			add_player(Player.from_csv(line))
 		end
+	end
 
+	def save_high_scores(to_file="high_scores.txt")
+		File.open(to_file, "w") do |file|
+			file.puts "#{@title} High Scores:"
+			@players.sort.each { |player|  file.puts "#{player.name.ljust(20, '.')} (#{player.score})" }
+		end
 	end
 
 	def add_player(player)
