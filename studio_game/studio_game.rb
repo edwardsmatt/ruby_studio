@@ -1,8 +1,12 @@
 require_relative 'game'
 require_relative 'player'
+require_relative 'berserk_player'
 
 game = Game.new("Knuckleheads")
 game.load_file(ARGV.shift || "players.csv")
+berserker = BerserkPlayer.new("berserker", 50)
+game.add_player(berserker)
+
 loop do
   puts "\nHow many game rounds? ('quit' to exit)"
   answer = gets.chomp.downcase
