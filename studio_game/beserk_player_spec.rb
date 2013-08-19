@@ -26,5 +26,4 @@ describe BerserkPlayer do
 
     @player.health.should == @initial_health + (8 * 15)
   end
-
 end

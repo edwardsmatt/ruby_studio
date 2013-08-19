@@ -3,10 +3,20 @@ require_relative 'treasure_trove'
 
 class ClumsyPlayer < Player
 
+  attr_reader :boost_factor
+
+  def initialize(name, health=100, boost_factor=1)
+    super(name, health)
+    @boost_factor = boost_factor
+  end
+
   def found_treasure(treasure)
     super(Treasure.new(treasure.name, treasure.points / 2.0))
   end
 
+  def w00t
+    @boost_factor.times { super }
+  end
 end
 
 if __FILE__ == $0
@@ -24,4 +34,7 @@ if __FILE__ == $0
     puts "#{treasure.points} total #{treasure.name} points"
   end
   puts "#{clumsy.points} grand total points"
+  puts "#{clumsy}"
+  clumsy.w00t
+  puts "#{clumsy}"
 end
