@@ -1,21 +1,22 @@
 require_relative 'player'
 require_relative 'treasure_trove'
+module StudioGame
+  class ClumsyPlayer < Player
 
-class ClumsyPlayer < Player
+    attr_reader :boost_factor
 
-  attr_reader :boost_factor
+    def initialize(name, health=100, boost_factor=1)
+      super(name, health)
+      @boost_factor = boost_factor
+    end
 
-  def initialize(name, health=100, boost_factor=1)
-    super(name, health)
-    @boost_factor = boost_factor
-  end
+    def found_treasure(treasure)
+      super(Treasure.new(treasure.name, treasure.points / 2.0))
+    end
 
-  def found_treasure(treasure)
-    super(Treasure.new(treasure.name, treasure.points / 2.0))
-  end
-
-  def w00t
-    @boost_factor.times { super }
+    def w00t
+      @boost_factor.times { super }
+    end
   end
 end
 

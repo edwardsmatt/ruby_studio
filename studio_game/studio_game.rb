@@ -3,10 +3,14 @@ require_relative 'player'
 require_relative 'berserk_player'
 require_relative 'clumsy_player'
 
-game = Game.new("Knuckleheads")
+
+
+
+
+game = StudioGame::Game.new("Knuckleheads")
 game.load_file(ARGV.shift || "players.csv")
-game.add_player(BerserkPlayer.new("berserker", 50))
-game.add_player(ClumsyPlayer.new("klutz", 105, 10))
+game.add_player(StudioGame::BerserkPlayer.new("berserker", 50))
+game.add_player(StudioGame::ClumsyPlayer.new("klutz", 105, 10))
 
 loop do
   puts "\nHow many game rounds? ('quit' to exit)"
