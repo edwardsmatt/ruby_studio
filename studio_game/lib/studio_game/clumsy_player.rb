@@ -1,5 +1,6 @@
 require_relative 'player'
 require_relative 'treasure_trove'
+
 module StudioGame
   class ClumsyPlayer < Player
 

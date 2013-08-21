@@ -1,5 +1,4 @@
 require_relative 'player'
-require_relative 'die'
 require_relative 'game_turn'
 require_relative 'treasure_trove'
 
@@ -12,7 +11,7 @@ module StudioGame
 			@players = []
 		end
 
-		def load_file(file_name)
+		def load_players(file_name)
 			File.foreach(file_name) do |line|
 				add_player(Player.from_csv(line))
 			end

@@ -1,4 +1,5 @@
-require_relative 'game'
+require 'studio_game/game'
+
 module StudioGame
   describe Game do
     before do
@@ -70,8 +71,8 @@ module StudioGame
 
     it "loads players from a file" do
       game = Game.new("Test Players")
-      file_name = File.dirname(__FILE__)+"/players.csv"
-      game.load_file(file_name)
+      file_name = File.join(File.dirname(__FILE__), "players.csv")
+      game.load_players(file_name)
       game.number_of_players.should == 3
     end
 

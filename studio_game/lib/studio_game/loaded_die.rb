@@ -12,4 +12,4 @@ module StudioGame
       @number
     end
   end
-module StudioGame
+end
